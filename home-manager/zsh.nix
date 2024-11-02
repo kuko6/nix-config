@@ -41,6 +41,6 @@
     COLOR_VENV="%F{10}"
 
     setopt PROMPT_SUBST
-    export PROMPT="%F{15}%n@%m %F{1}%. %F{6}$(parse_git_branch)$f> "
+    export PROMPT="%F{15}%n@%m %F{1}%. %F{6}$(parse_git_branch)%f> "
   '';
 }

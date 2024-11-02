@@ -14,22 +14,33 @@
     home-manager,
     ...
   } @ inputs: let
-    # system = "aarch64-linux"
-    system = "x86_64-linux";
+    inherit (self) outputs;
+    
+    system = "aarch64-linux";
+    # system = "x86_64-linux";
     
     # maybe this also works 
     # system = builtins.getEnv "NIX_SYSTEM" or "x86_64-linux";
     
     pkgs = nixpkgs.legacyPackages.${system};
    in {
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild switch --flake .#hostname'
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        # main nixos config file
+        modules = [./nixos/configuration.nix];
+      };
+    };
+    
     homeConfigurations = {
       kuko = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [
-          ./home-manager/home.nix
-        ];
+        modules = [./home-manager/home.nix];
       };
     };
+    
     templates = {
       python = {
         description = "A simple python template";

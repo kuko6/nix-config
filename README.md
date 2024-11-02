@@ -1,5 +1,10 @@
 # Nix Config
 
+To apply NixOS config:
+```
+sudo nixos-rebuild switch --flake .#nixos
+```
+
 To update packages:
 ```
 nix flake update
