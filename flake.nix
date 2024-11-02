@@ -34,7 +34,7 @@
       python = mkWelcomeText {
         name = "Python Template";
         description = "A simple python template";
-        path = "./templates/python";
+        path = "./templates/python.nix";
       }
     };
   };
