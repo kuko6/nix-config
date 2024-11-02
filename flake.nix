@@ -31,10 +31,9 @@
       };
     };
     templates = {
-      python = mkWelcomeText {
-        name = "Python Template";
+      python = {
         description = "A simple python template";
-        path = "./templates/python.nix";
+        path = ./templates/python;
       };
     };
   };
