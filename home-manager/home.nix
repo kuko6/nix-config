@@ -11,11 +11,12 @@
   home.stateVersion = "23.05";
   
   # Packages installed to the user profile 
+  # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     neofetch
-    helix
-    git
-    zsh
+    # helix
+    # git
+    # zsh
   ];
 
   programs.home-manager.enable = true;
@@ -24,9 +25,4 @@
     git = import ./git.nix {inherit config pkgs;};
     helix = import ./helix.nix {inherit config pkgs;};
   };
-
-  # imports = [
-  #   ./git.nix
-  #   ./zsh.nix
-  # ];
 }

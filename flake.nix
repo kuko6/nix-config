@@ -16,6 +16,10 @@
   } @ inputs: let
     # system = "aarch64-linux"
     system = "x86_64-linux";
+    
+    # maybe this also works 
+    # system = builtins.getEnv "NIX_SYSTEM" or "x86_64-linux";
+    
     pkgs = nixpkgs.legacyPackages.${system};
    in {
     homeConfigurations = {

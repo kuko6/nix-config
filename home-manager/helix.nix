@@ -34,6 +34,7 @@
       lsp.display-messages = true;
     };
   };
+
   languages = {  
     language = [{
       name = "typescript";
