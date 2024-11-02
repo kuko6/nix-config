@@ -13,6 +13,7 @@ home-manager switch --flake .#kuko
 Clearing garbage collector:
 ```
 nix-collect-garbage 
+nix store gc
 ```
 or
 ```

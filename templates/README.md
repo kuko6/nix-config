@@ -1,10 +1,10 @@
 Get the template:
 ```
 # Initialize in the current project
-nix flake init --template templates#full
+nix flake init --template github:kuko6/nix-config/main#lang
 
 # Create a new project
-nix flake new --template templates#full ./new-project-dir
+nix flake new --template github:kuko6/nix-config/main#lang ./new-project-dir
 ```
 
 Run the dev env:
