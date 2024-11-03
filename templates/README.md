@@ -9,5 +9,5 @@ nix flake new --template github:kuko6/nix-config/main#lang ./new-project-dir
 
 Run the dev env:
 ```
-nix develop
+nix develop -c $SHELL
 ```
