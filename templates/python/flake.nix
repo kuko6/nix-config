@@ -21,38 +21,13 @@
               pyright
             ]) ++
             [
-              gcc
-              binutils
-              libtool 
-              automake
-              autoconf 
-              make 
-              libffi 
-              openssl
-              zlib 
-              libxml2 
-              libxslt
-              bzip2 
-              xz 
-              cmake 
-              ninja
+              stdenv.cc.cc
+              pythonManylinuxPackages.manylinux_2_28Package
             ];
           shellHook = ''
             export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
-              pkgs.gcc
-              pkgs.binutils
-              pkgs.libtool
-              pkgs.automake
-              pkgs.autoconf
-              pkgs.make
-              pkgs.libffi
-              pkgs.openssl
-              pkgs.zlib
-              pkgs.libxslt
-              pkgs.bzip2
-              pkgs.xz
-              pkgs.cmake
-              pkgs.ninja
+              pkgs.stdenv.cc.cc
+              pkgs.pythonManylinuxPackages.manylinux_2_28Package
             ]}:$LD_LIBRARY_PATH
           '';
         };
