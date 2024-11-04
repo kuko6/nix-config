@@ -3,40 +3,55 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default-linux";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
+  
+  outputs = { self, nixpkgs, home-manager, systems, ... 
+  
   } @ inputs: let
     inherit (self) outputs;
-    
-    system = "aarch64-linux";
+    lib = nixpkgs.lib // home-manager.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );    
+    # system = "aarch64-linux";
     # system = "x86_64-linux";
-    
-    # maybe this also works 
-    # system = builtins.getEnv "NIX_SYSTEM" or "x86_64-linux";
-    
-    pkgs = nixpkgs.legacyPackages.${system};
-   in {
+    # pkgs = nixpkgs.legacyPackages.${system};
+  in {
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild switch --flake .#hostname'
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
         specialArgs = {inherit inputs outputs;};
-        # main nixos config file
-        modules = [./nixos/configuration.nix];
+        modules = [ 
+          ./nixos/configuration.nix # path to the main NixOS configuration                
+          # make home-manager as a module of nixos
+          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.kuko = import ./home-manager/home.nix;
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }
+        ];
       };
     };
-    
+
+    # Home manger configuration entrypoint
     homeConfigurations = {
       kuko = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        # inherit pkgs;
+        pkgs = pkgsFor.x86_64-linux;
         modules = [./home-manager/home.nix];
       };
     };

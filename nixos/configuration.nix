@@ -31,15 +31,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "sk_SK.UTF-8";
-    LC_IDENTIFICATION = "sk_SK.UTF-8";
-    LC_MEASUREMENT = "sk_SK.UTF-8";
-    LC_MONETARY = "sk_SK.UTF-8";
-    LC_NAME = "sk_SK.UTF-8";
-    LC_NUMERIC = "sk_SK.UTF-8";
-    LC_PAPER = "sk_SK.UTF-8";
-    LC_TELEPHONE = "sk_SK.UTF-8";
-    LC_TIME = "sk_SK.UTF-8";
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Enable the X11 windowing system.
@@ -127,6 +127,24 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Limit the number of generations to keep
+  boot.loader.systemd-boot.configurationLimit = 10;
+  # boot.loader.grub.configurationLimit = 10;
+
+  # Perform garbage collection weekly to maintain low disk usage
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+
+  # Optimize storage
+  # You can also manually optimize the store via:
+  #    nix-store --optimise
+  # Refer to the following link for more details:
+  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+  nix.settings.auto-optimise-store = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

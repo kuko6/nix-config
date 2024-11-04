@@ -14,15 +14,29 @@
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     neofetch
-    # helix
-    # git
-    # zsh
+    bat
+
+    # Gnome extensions
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.dash-to-dock
   ];
 
-  programs.home-manager.enable = true;
+  programs.git = {
+  	enable = true;
+  	userName = "Jakub Povinec";
+  	userEmail = "jakub.povinec@gmail.com";
+
+  	extraConfig = {
+  		init = {
+  			defaultBranch = "main";
+  		};
+    };
+	};
+
   programs = {
     zsh = import ./zsh.nix {inherit config pkgs;};
-    git = import ./git.nix {inherit config pkgs;};
     helix = import ./helix.nix {inherit config pkgs;};
   };
+
+  programs.home-manager.enable = true;
 }
