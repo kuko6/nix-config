@@ -39,5 +39,5 @@ nix-collect-garbage --delete-old
 ```
 
 ## Ref
-[nix-starter-configs template](https://github.com/Misterio77/nix-starter-configs?tab=readme-ov-file)
-[NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/introduction/)
+- [nix-starter-configs template](https://github.com/Misterio77/nix-starter-configs?tab=readme-ov-file)
+- [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/introduction/)
