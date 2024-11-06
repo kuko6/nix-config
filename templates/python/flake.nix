@@ -16,14 +16,14 @@
             [ python3 ]
             ++ (with pkgs.python3Packages; [ pip venvShellHook ruff pyright ])
             ++ [ stdenv.cc.cc pythonManylinuxPackages.manylinux2014Package ];
-          shellHook = ''
-            export LD_LIBRARY_PATH=${
-              pkgs.lib.makeLibraryPath [
-                pkgs.stdenv.cc.cc
-                pkgs.pythonManylinuxPackages.manylinux2014Package
-              ]
-            }:$LD_LIBRARY_PATH
-          '';
+          # shellHook = ''
+          #   export LD_LIBRARY_PATH=${
+          #     pkgs.lib.makeLibraryPath [
+          #       pkgs.stdenv.cc.cc
+          #       pkgs.pythonManylinuxPackages.manylinux2014Package
+          #     ]
+          #   }:$LD_LIBRARY_PATH
+          # '';
         };
       });
     };
