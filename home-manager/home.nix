@@ -10,12 +10,20 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
 
+  fonts.fontconfig.enable = true;
+
   # Packages installed to the user profile 
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     neofetch
     bat
     starship
+
+    # Fonts
+    departure-mono
+    fira-code
+    fira-code-symbols
+    fira-code-nerdfont
 
     # Gnome extensions
     gnomeExtensions.blur-my-shell
