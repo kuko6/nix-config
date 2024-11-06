@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     neofetch
     bat
+    starship
 
     # Gnome extensions
     gnomeExtensions.blur-my-shell

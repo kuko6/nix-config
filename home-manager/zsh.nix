@@ -23,24 +23,26 @@
     export CLICOLOR=1
     export LSCOLORS=ExFxBxDxCxegedabagacad
 
-    parse_git_branch() {
-        git branch 2> /dev/null | sed -n -e "s/^\* \(.*\)/(\1) /p"
-    }
+    eval "$(starship init zsh)"
+    
+    # parse_git_branch() {
+    #     git branch 2> /dev/null | sed -n -e "s/^\* \(.*\)/(\1) /p"
+    # }
 
-    get_pyenv() {
-        basename $VIRTUAL_ENV 2> /dev/null | sed -n -e "s/\(.*\)/(\1) /p"
-    }
+    # get_pyenv() {
+    #     basename $VIRTUAL_ENV 2> /dev/null | sed -n -e "s/\(.*\)/(\1) /p"
+    # }
 
-    #PYTHONVENV=$(basename $VIRTUAL_ENV)
-    NEWLINE=$"\n"
+    # #PYTHONVENV=$(basename $VIRTUAL_ENV)
+    # NEWLINE=$"\n"
 
-    COLOR_DEF="%f"
-    COLOR_GIT="%F{6}"
-    COLOR_HOST="%F{15}"
-    COLOR_DIR="%F{1}"
-    COLOR_VENV="%F{10}"
+    # COLOR_DEF="%f"
+    # COLOR_GIT="%F{6}"
+    # COLOR_HOST="%F{15}"
+    # COLOR_DIR="%F{1}"
+    # COLOR_VENV="%F{10}"
 
-    setopt PROMPT_SUBST
-    export PROMPT="%F{15}%n@%m %F{1}%. %F{6}$(parse_git_branch)%f> "
+    # setopt PROMPT_SUBST
+    # export PROMPT="%F{15}%n@%m %F{1}%. %F{6}$(parse_git_branch)%f> "
   '';
 }
