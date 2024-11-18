@@ -63,8 +63,9 @@
     set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_maroon}]  #{pane_current_command} "
     set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
     set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_blue}]  #{=/-32/...:#{s|$USER|~|:#{b:pane_current_path}}} "
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]#{?window_zoomed_flag,│,}"
+    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
     set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_yellow}]#{?window_zoomed_flag,  zoom ,}"
+    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]#{?window_zoomed_flag,│,}"
 
     # status right look and feel
     set -g status-right-length 100
@@ -76,7 +77,7 @@
     # Configure Tmux
     set -g status-position bottom
     set -g status-style "bg=#{@thm_mantle}"
-    set -g status-justify "absolute-centre"
+    set -g status-justify "left"
 
     # pane border look and feel
     # setw -g pane-border-status bottom
@@ -95,11 +96,14 @@
     # set -g window-status-last-style "fg=#{@thm_peach}"
     set -g window-status-activity-style "bg=#{@thm_red},fg=#{@thm_bg}"
     set -g window-status-bell-style "bg=#{@thm_red},fg=#{@thm_bg},bold"
-    set -gF window-status-separator "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]│"
+    set -gF window-status-separator "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]"
 
     set -g window-status-current-format " #I#{?#{!=:#{window_name},Window},: #W,} "
     set -g window-status-current-style "bg=#{@thm_peach},fg=#{@thm_bg},bold"
 
+    set -g menu-style "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]"
+    set -g message-style "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]"
+    setw -g mode-style 'bg=#{@thm_surface_2}'
 
     # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
     # bootstrap tpm
