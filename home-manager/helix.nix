@@ -4,8 +4,8 @@
     theme = "catppuccin_macchiato";
     editor = {
       bufferline = "multiple";
+      color-modes = true;
       soft-wrap.enable = true;
-
       statusline = {
         left = [ "mode" "spinner" "version-control" ];
         center = [ "file-name" ];

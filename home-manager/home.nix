@@ -52,6 +52,7 @@
   programs = {
     zsh = import ./zsh.nix { inherit config pkgs; };
     helix = import ./helix.nix { inherit config pkgs; };
+    tmux = import ./tmux.nix { inherit config pkgs; };
   };
 
   programs.home-manager.enable = true;
