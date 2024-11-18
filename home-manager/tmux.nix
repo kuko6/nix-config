@@ -8,6 +8,8 @@
   ];
 
   extraConfig = ''
+  set -as terminal-features ",xterm-256color:RGB"
+
   # Enables mouse
   set -g mouse on
 
@@ -108,5 +110,5 @@
      "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
   run '~/.tmux/plugins/tpm/tpm'
-  ''
+  '';
 }
