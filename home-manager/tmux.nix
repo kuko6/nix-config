@@ -72,7 +72,7 @@
     set -g status-right ""
     set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_green}]  #{user}@#{host}"
     set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]│"
-    set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_blue}] 󰭦 %Y-%m-%d 󰅐 %H:%M "
+    set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_blue}] 󰭦 %d.%m 󰅐 %H:%M "
 
     # Configure Tmux
     set -g status-position bottom

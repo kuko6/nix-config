@@ -9,7 +9,7 @@
   syntaxHighlighting.enable = true;
 
   shellAliases = {
-    ll = "ls -l";
+    ls = "ls --color";
     # update = "sudo nixos-rebuild switch";
   };
  
