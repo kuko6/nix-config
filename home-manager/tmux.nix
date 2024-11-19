@@ -54,25 +54,25 @@
     set -ogq @thm_surface_0 "#313244"
     set -ogq @thm_mantle "#181825"
     set -ogq @thm_crust "#11111b"
-
+    
     # status left look and feel
     set -g status-left-length 100
     set -g status-left ""
     set -ga status-left "#{?client_prefix,#{#[bg=#{@thm_red},fg=#{@thm_bg},bold]  #S },#{#[bg=#{@thm_bg},fg=#{@thm_green}]  #S }}"
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_maroon}]  #{pane_current_command} "
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_blue}]  #{=/-32/...:#{s|$USER|~|:#{b:pane_current_path}}} "
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_yellow}]#{?window_zoomed_flag,  zoom ,}"
-    set -ga status-left "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]#{?window_zoomed_flag,│,}"
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]│"
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_maroon}]  #{pane_current_command} "
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]│"
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_blue}]  #{=/-32/...:#{s|$USER|~|:#{b:pane_current_path}}} "
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]│"
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_yellow}]#{?window_zoomed_flag,  zoom ,}"
+    set -ga status-left "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]#{?window_zoomed_flag,│,}"
 
     # status right look and feel
     set -g status-right-length 100
     set -g status-right ""
-    set -ga status-right "#[bg=#{@thm_bg},fg=#{@thm_green}]  #{user}@#{host}"
-    set -ga status-right "#[bg=#{@thm_bg},fg=#{@thm_overlay_0},none]│"
-    set -ga status-right "#[bg=#{@thm_bg},fg=#{@thm_blue}] 󰭦 %Y-%m-%d 󰅐 %H:%M "
+    set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_green}]  #{user}@#{host}"
+    set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0},none]│"
+    set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_blue}] 󰭦 %Y-%m-%d 󰅐 %H:%M "
 
     # Configure Tmux
     set -g status-position bottom
@@ -96,7 +96,7 @@
     # set -g window-status-last-style "fg=#{@thm_peach}"
     set -g window-status-activity-style "bg=#{@thm_red},fg=#{@thm_bg}"
     set -g window-status-bell-style "bg=#{@thm_red},fg=#{@thm_bg},bold"
-    set -gF window-status-separator "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]"
+    set -gF window-status-separator "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0}]"
 
     set -g window-status-current-format " #I#{?#{!=:#{window_name},Window},: #W,} "
     set -g window-status-current-style "bg=#{@thm_peach},fg=#{@thm_bg},bold"

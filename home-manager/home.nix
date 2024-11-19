@@ -18,7 +18,8 @@
     neofetch
     bat
     starship
-
+    zed-editor
+    
     # Fonts
     departure-mono
     fira-code
