@@ -33,9 +33,9 @@ Clearing garbage collector:
 nix-collect-garbage 
 nix store gc
 ```
-or
+or to also delete all generations
 ```sh
-nix-collect-garbage --delete-old
+sudo nix-collect-garbage --delete-old
 ```
 
 ## Ref
