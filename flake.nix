@@ -49,7 +49,13 @@
 
     # Home manger configuration entrypoint
     homeConfigurations = {
-      kuko = home-manager.lib.homeManagerConfiguration {
+      arm = home-manager.lib.homeManagerConfiguration {
+        # inherit pkgs;
+        pkgs = pkgsFor.aarch64;
+        modules = [./home-manager/home.nix];
+      };
+
+      x86 = home-manager.lib.homeManagerConfiguration {
         # inherit pkgs;
         pkgs = pkgsFor.x86_64-linux;
         modules = [./home-manager/home.nix];

@@ -18,7 +18,7 @@
     neofetch
     bat
     starship
-    zed-editor
+    # zed-editor
     
     # Fonts
     departure-mono
