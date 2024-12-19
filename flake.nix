@@ -51,7 +51,7 @@
     homeConfigurations = {
       arm = home-manager.lib.homeManagerConfiguration {
         # inherit pkgs;
-        pkgs = pkgsFor.aarch64;
+        pkgs = pkgsFor.aarch64-linux;
         modules = [./home-manager/home.nix];
       };
 
