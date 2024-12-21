@@ -18,6 +18,7 @@
     neofetch
     bat
     starship
+    ulauncher
     # zed-editor
     
     # Fonts
@@ -29,6 +30,10 @@
     # Gnome extensions
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.places-status-indicator
+    gnomeExtensions.user-themes
+    gnomeExtensions.open-bar
+    gnomeExtensions.runcat
   ];
 
   dconf.settings = {
