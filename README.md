@@ -14,7 +14,7 @@ nix-shell '<home-manager>' -A install
 
 To apply NixOS config:
 ```sh
-sudo nixos-rebuild switch --flake .#nixos
+sudo nixos-rebuild switch --flake .#<config>
 ```
 
 To update packages:
@@ -24,7 +24,7 @@ nix flake update
 
 New packages should be declared in `~/nix/home-manager/`, to apply changes run:
 ```sh
-home-manager switch --flake ~/.dotfiles/nix#arm
+home-manager switch --flake ~/.dotfiles/nix#<config>
 ```
 
 Clearing garbage collector:
