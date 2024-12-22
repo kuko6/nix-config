@@ -12,15 +12,16 @@
 
   fonts.fontconfig.enable = true;
 
-  # Packages installed to the user profile 
+  # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     neofetch
     bat
     starship
-    ulauncher
     # zed-editor
-    
+    # ulauncher
+    # tofi
+
     # Fonts
     departure-mono
     fira-code
@@ -52,7 +53,6 @@
     enable = true;
     userName = "Jakub Povinec";
     userEmail = "jakub.povinec@gmail.com";
-
     extraConfig = { init = { defaultBranch = "main"; }; };
   };
 
