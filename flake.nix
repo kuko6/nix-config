@@ -23,9 +23,6 @@
           config.allowUnfree = true;
         }
     );    
-    # system = "aarch64-linux";
-    # system = "x86_64-linux";
-    # pkgs = nixpkgs.legacyPackages.${system};
   in {
     # NixOS configuration entrypoint
     nixosConfigurations = {
@@ -49,17 +46,22 @@
 
     # Home manger configuration entrypoint
     homeConfigurations = {
-      arm = home-manager.lib.homeManagerConfiguration {
-        # inherit pkgs;
-        pkgs = pkgsFor.aarch64-linux;
-        modules = [./home-manager/home.nix];
+      kuko = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.builtins.currentSystem;
+        modules = [ ./home-manager/home.nix ];
       };
+      
+      # arm = home-manager.lib.homeManagerConfiguration {
+      #   # inherit pkgs;
+      #   pkgs = pkgsFor.aarch64-linux;
+      #   modules = [./home-manager/home.nix];
+      # };
 
-      x86 = home-manager.lib.homeManagerConfiguration {
-        # inherit pkgs;
-        pkgs = pkgsFor.x86_64-linux;
-        modules = [./home-manager/home.nix];
-      };
+      # x86 = home-manager.lib.homeManagerConfiguration {
+      #   # inherit pkgs;
+      #   pkgs = pkgsFor.x86_64-linux;
+      #   modules = [./home-manager/home.nix];
+      # };
     };
     
     templates = {

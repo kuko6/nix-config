@@ -33,12 +33,13 @@
     gnomeExtensions.places-status-indicator
     gnomeExtensions.user-themes
     gnomeExtensions.open-bar
+    gnomeExtensions.space-bar
     gnomeExtensions.runcat
   ];
 
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
-      search = [ "<Super>S" ];
+      # search = [ "<Super>S" ];
       close = [ "<Super>Q" ];
       switch-to-workspace-left = [ "<Control>Left" ];
       switch-to-workspace-right = [ "<Control>Right" ];
