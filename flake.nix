@@ -56,6 +56,11 @@
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./home-manager/home.nix ];
         };
+        
+        minimal = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-linux;
+          modules = [ ./home-manager/minimal.nix ];
+        };
       };
 
       # Templates (for development environments)
