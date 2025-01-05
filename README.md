@@ -5,6 +5,13 @@ Download nix:
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
 ```
 
+Clone this repo:
+```sh
+nix-shell -p git
+
+git clone https://github.com/kuko6/nix-config
+```
+
 Download home-manager:
 ```sh
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager &&
