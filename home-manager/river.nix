@@ -10,43 +10,66 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
 
+  xdg = {
+    enable = true;
+    # will be in ~/.config/xdg-desktop-portals/
+    portal = {
+      config = {
+        common.default = "gtk";
+        river.default = ["wlr" "gtk"];
+      };
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
+      enable = true;
+    };
+  };
+
+  home.file = {
+    "${config.xdg.configHome}" = {
+      source = ../dotfiles;
+      recursive = true;
+    };
+  };
+
   fonts.fontconfig.enable = true;
+
+  wayland.windowManager.river = {
+    enable=true;
+  };
 
   # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
+    # wm stuff
+    # xdg-utils
+    # xwayland
+    # wlroots
+    # libxkbcommon
+    # dbus
+    # glib
+    # systemd
+
     neofetch
     bat
     starship
-    # zed-editor
-    # ulauncher
-    # tofi
+    ghostty
+    waybar
+    foot
+    fuzzel
 
     # Fonts
     departure-mono
     fira-code
     fira-code-symbols
-    fira-code-nerdfont
-
-    # Gnome extensions
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.places-status-indicator
-    gnomeExtensions.user-themes
-    gnomeExtensions.open-bar
-    gnomeExtensions.space-bar
-    gnomeExtensions.runcat
+    nerd-fonts.fira-code
   ];
 
-  dconf.settings = {
-    "org/gnome/desktop/wm/keybindings" = {
-      # search = [ "<Super>S" ];
-      close = [ "<Super>Q" ];
-      switch-to-workspace-left = [ "<Control>Left" ];
-      switch-to-workspace-right = [ "<Control>Right" ];
-      move-to-workspace-left = [ "<Control><Shift>Left" ];
-      move-to-workspace-right = [ "<Control><Shift>Right" ];
-    };
+  # services.snapd.enable = false;
+
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "river";
+    XDG_SESSION_TYPE = "wayland";
+    GTK_USE_PORTAL = 1;
+    GDK_BACKEND = "wayland";
   };
 
   programs.git = {

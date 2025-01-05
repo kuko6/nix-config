@@ -47,19 +47,24 @@
 
       # Home-manager configurations
       homeConfigurations = {
-        default-arm = home-manager.lib.homeManagerConfiguration {
+        gnome-arm = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./home-manager/gnome.nix ];
         };
 
-        default-x86 = home-manager.lib.homeManagerConfiguration {
+        gnome-x86 = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./home-manager/gnome.nix ];
         };
-        
-        minimal = home-manager.lib.homeManagerConfiguration {
+
+        river-arm = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
-          modules = [ ./home-manager/minimal.nix ];
+          modules = [ ./home-manager/river.nix ];
+        };
+
+        river-x86 = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [ ./home-manager/river.nix ];
         };
       };
 
