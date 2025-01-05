@@ -10,6 +10,15 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
 
+  home.file = {
+    "${config.xdg.configHome}" = {
+      source = ../dotfiles;
+      recursive = true;
+    };
+  };
+
+  fonts.fontconfig.enable = true;
+
   xdg = {
     enable = true;
     # will be in ~/.config/xdg-desktop-portals/
@@ -23,15 +32,6 @@
     };
   };
 
-  home.file = {
-    "${config.xdg.configHome}" = {
-      source = ../dotfiles;
-      recursive = true;
-    };
-  };
-
-  fonts.fontconfig.enable = true;
-
   wayland.windowManager.river = {
     enable=true;
   };
@@ -39,15 +39,6 @@
   # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
-    # wm stuff
-    # xdg-utils
-    # xwayland
-    # wlroots
-    # libxkbcommon
-    # dbus
-    # glib
-    # systemd
-
     neofetch
     bat
     starship
@@ -55,6 +46,7 @@
     waybar
     foot
     fuzzel
+    swaybg
 
     # Fonts
     departure-mono
@@ -65,12 +57,12 @@
 
   # services.snapd.enable = false;
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "river";
-    XDG_SESSION_TYPE = "wayland";
-    GTK_USE_PORTAL = 1;
-    GDK_BACKEND = "wayland";
-  };
+  # home.sessionVariables = {
+  #   XDG_CURRENT_DESKTOP = "river";
+  #   XDG_SESSION_TYPE = "wayland";
+  #   GTK_USE_PORTAL = 1;
+  #   GDK_BACKEND = "wayland";
+  # };
 
   programs.git = {
     enable = true;

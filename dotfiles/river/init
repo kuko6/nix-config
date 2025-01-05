@@ -10,10 +10,9 @@
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
-export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=river
-export GDK_BACKEND=wayland
-export GTK_USE_PORTAL=1
+# Waybar didnt work on ubuntu without this
+riverctl spawn "dbus-update-activation-environment SEATD_SOCK DISPLAY WAYLAND_DISPLAY DESKTOP_SESSION=river XDG_CURRENT_DESKTOP=river"
+# riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
 
 # Waybar and Wallpaper
 exec waybar &
