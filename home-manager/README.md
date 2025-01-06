@@ -24,7 +24,7 @@ sudo zypper in greetd gtkgreet cage
 ```
 
 - edit `/etc/greetd/config.toml`
-```bash
+```toml
 [terminal]
 vt = 1
 
@@ -59,7 +59,7 @@ sudo systemctl start greetd
 ### Launching
 Add `river.desktop` to `/usr/share/wayland-sessions/` with:
 
-```toml
+```
 [Desktop Entry]
 Name=River
 Comment=Dynamic Wayland compositor
@@ -72,25 +72,22 @@ move `start-river` to `/usr/local/bin`
 ### App fix
 To remove minimize / maximize / close from gnome apps add:
 
-```toml
+```
 [Settings]
 gtk-decoration-layout=:
 ```
 
 to `~/.config/gtk-4.0/settings.ini` and (or) `~/.config/gtk-3.0/settings.ini`
 
-## Resources
+## Ref
 
-[https://codeberg.org/river/river](https://codeberg.org/river/river)
-
-[https://github.com/Alexays/Waybar](https://github.com/Alexays/Waybar)
-
-[https://nix-community.github.io/home-manager/options.xhtml](https://nix-community.github.io/home-manager/options.xhtml)
+- [https://codeberg.org/river/river](https://codeberg.org/river/river)
+- [https://github.com/Alexays/Waybar](https://github.com/Alexays/Waybar)
+- [https://nix-community.github.io/home-manager/options.xhtml](https://nix-community.github.io/home-manager/options.xhtml)
 
 ---
 
-[https://github.com/CelestialCrafter/nixos-config](https://github.com/CelestialCrafter/nixos-config)
-
-[https://github.com/uncomfyhalomacro/river-paper-theme](https://github.com/uncomfyhalomacro/river-paper-theme)
-
-[https://git.sr.ht/~lown/dotfiles-nixos-river](https://git.sr.ht/~lown/dotfiles-nixos-river)
+- [https://github.com/CelestialCrafter/nixos-config](https://github.com/CelestialCrafter/nixos-config)
+- [https://github.com/uncomfyhalomacro/river-paper-theme](https://github.com/uncomfyhalomacro/river-paper-theme)
+- [https://git.sr.ht/~lown/dotfiles-nixos-river](https://git.sr.ht/~lown/dotfiles-nixos-river)
+- [https://www.reddit.com/r/unixporn/comments/1dq3lv3/hyprland_surprisingly_easy_to_install_on_debian/](https://www.reddit.com/r/unixporn/comments/1dq3lv3/hyprland_surprisingly_easy_to_install_on_debian/)

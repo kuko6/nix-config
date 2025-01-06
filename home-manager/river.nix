@@ -32,6 +32,23 @@
     };
   };
 
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Catppuccin-Latte-Compact-Pink-Light";
+  #     package = pkgs.catppuccin-gtk.override {
+  #       accents = [ "pink" ];
+  #       size = "compact";
+  #       tweaks = [ "normal" ];
+  #       variant = "latte";
+  #     };
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  # };
+
   wayland.windowManager.river = {
     enable=true;
   };
@@ -40,14 +57,17 @@
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     neofetch
-    bat
     starship
-    ghostty
+    yazi
+    tmux
+    helix
+    # ghostty
+
     waybar
     foot
     fuzzel
     swaybg
-
+    
     # Fonts
     departure-mono
     fira-code
@@ -73,8 +93,8 @@
 
   programs = {
     zsh = import ./modules/zsh.nix { inherit config pkgs; };
-    helix = import ./modules/helix.nix { inherit config pkgs; };
-    tmux = import ./modules/tmux.nix { inherit config pkgs; };
+    # helix = import ./modules/helix.nix { inherit config pkgs; };
+    # tmux = import ./modules/tmux.nix { inherit config pkgs; };
   };
 
   programs.home-manager.enable = true;
