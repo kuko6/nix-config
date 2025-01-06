@@ -50,3 +50,4 @@ sudo nix-collect-garbage --delete-old
 - [Changing default shell on home-manager](https://discourse.nixos.org/t/using-home-manager-to-control-default-user-shell/8489/2)
 - [Use Nix on Ubuntu](https://tech.aufomm.com/my-nix-journey-use-nix-with-ubuntu/)
 - [How to Use Nix to Set Up Dev Environment](https://tech.aufomm.com/my-nix-journey-how-to-use-nix-to-set-up-dev-environment/)
+- [NixOS Manual](https://nixos.org/manual/nixos/stable/#ch-configuration)

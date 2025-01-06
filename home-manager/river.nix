@@ -61,13 +61,14 @@
     yazi
     tmux
     helix
+    btop
     # ghostty
 
     waybar
     foot
     fuzzel
     swaybg
-    
+
     # Fonts
     departure-mono
     fira-code
