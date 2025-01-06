@@ -39,7 +39,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.kuko = import ./home-manager/river.nix;
+              home-manager.users.kuko = import ./home-manager/bspwm.nix;
             }
           ];
         };
