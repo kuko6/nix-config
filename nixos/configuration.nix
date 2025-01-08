@@ -42,18 +42,28 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
+  # For X11 (bspwm)
   services = {
     displayManager = {
-      sddm.enable = true;
-      defaultSession = "bspwm";
+      sddm = {
+        enable = true;
+        theme = "catppuccin-mocha";
+        package = pkgs.kdePackages.sddm;
+      };
+        # wayland.enable = true;
+    };
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
+      windowManager.bspwm.enable = true;
     };
   };
 
-  # For River
+  # For Wayland (River)
   # hardware.opengl.enable = true;
+  ## security.rtkit.enable = true;
+  # services.dbus.enable = true;
+  # xdg.portal.wlr.enable = true;
   # services.greetd = {
   #   enable = true;
   #   settings = {
@@ -110,21 +120,26 @@
     ];
   };
 
-  # Install firefox.
-  # programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     vim
     git
     zsh
     curl
     bash
+    (catppuccin-sddm.override {
+      flavor = "mocha";
+      font  = "Noto Sans";
+      fontSize = "9";
+      # background = "${./wallpaper.png}";
+      # loginBackground = true;
+    })
   ];
+
+  programs.dconf.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -138,6 +153,7 @@
   # };
 
   # List services that you want to enable:
+  services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -173,5 +189,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

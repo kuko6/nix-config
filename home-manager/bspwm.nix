@@ -19,9 +19,26 @@
 
   fonts.fontconfig.enable = true;
 
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Catppuccin-Latte-Compact-Pink-Light";
+  #     package = pkgs.catppuccin-gtk.override {
+  #       accents = [ "pink" ];
+  #       size = "compact";
+  #       tweaks = [ "normal" ];
+  #       variant = "latte";
+  #     };
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  # };
+
   xsession.windowManager.bspwm = {
     enable = true;
-  }
+  };
 
   # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
@@ -31,6 +48,10 @@
     yazi
     tmux
     helix
+    btop
+    firefox
+    nautilus
+    qimgv
 
     kitty
     sxhkd

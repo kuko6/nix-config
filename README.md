@@ -31,12 +31,12 @@ nix flake update
 
 New packages should be declared in `~/nix/home-manager/`, to apply changes run:
 ```sh
-home-manager switch --flake ~/.dotfiles/nix#<config>
+home-manager switch --flake .#<config>
 ```
 
 Clearing garbage collector:
 ```sh
-nix-collect-garbage 
+nix-collect-garbage
 nix store gc
 ```
 or to also delete all generations

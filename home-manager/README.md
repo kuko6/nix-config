@@ -69,6 +69,7 @@ Type=Application
 
 move `start-river` to `/usr/local/bin`
 
+<!--
 ### App fix
 To remove minimize / maximize / close from gnome apps add:
 
@@ -78,7 +79,7 @@ gtk-decoration-layout=:
 ```
 
 to `~/.config/gtk-4.0/settings.ini` and (or) `~/.config/gtk-3.0/settings.ini`
-
+-->
 ## Ref
 
 - [https://codeberg.org/river/river](https://codeberg.org/river/river)
