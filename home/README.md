@@ -67,7 +67,7 @@ Exec=start-river
 Type=Application
 ```
 
-move `start-river` to `/usr/local/bin`
+move `modules/river/start-river` to `/usr/local/bin`
 
 <!--
 ### App fix

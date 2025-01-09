@@ -35,11 +35,16 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./nixos/configuration.nix
-            # Integrate home-manager with NixOS
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.kuko = import ./home-manager/bspwm.nix;
+              home-manager.users.kuko = { pkgs, ... }: {
+                imports = [
+                  ./home/default.nix
+                  # Choose which WM you want to use:
+                  ./home/modules/river  # or bspwm or gnome
+                ];
+              };
             }
           ];
         };
@@ -47,24 +52,20 @@
 
       # Home-manager configurations
       homeConfigurations = {
-        gnome-arm = home-manager.lib.homeManagerConfiguration {
+        arm = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
-          modules = [ ./home-manager/gnome.nix ];
+          modules = [
+            ./home
+            ./home/modules/river
+          ];
         };
 
-        gnome-x86 = home-manager.lib.homeManagerConfiguration {
+        x86 = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home-manager/gnome.nix ];
-        };
-
-        river-arm = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.aarch64-linux;
-          modules = [ ./home-manager/river.nix ];
-        };
-
-        river-x86 = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home-manager/river.nix ];
+          modules = [
+            ./home
+            ./home/modules/river
+          ];
         };
       };
 

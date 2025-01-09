@@ -19,25 +19,21 @@
 
   fonts.fontconfig.enable = true;
 
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Catppuccin-Latte-Compact-Pink-Light";
-  #     package = pkgs.catppuccin-gtk.override {
-  #       accents = [ "pink" ];
-  #       size = "compact";
-  #       tweaks = [ "normal" ];
-  #       variant = "latte";
-  #     };
-  #   };
-  #   iconTheme = {
-  #     name = "Papirus";
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  # };
-
-  xsession.windowManager.bspwm = {
+  gtk = {
     enable = true;
+    theme = {
+      name = "Catppuccin-Latte-Compact-Pink-Light";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        tweaks = [ "normal" ];
+        variant = "latte";
+      };
+    };
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme;
+    };
   };
 
   # Packages installed to the user profile
@@ -52,12 +48,7 @@
     firefox
     nautilus
     qimgv
-
-    kitty
-    sxhkd
-    polybar
-    rofi
-    feh
+    # ghostty
 
     # Fonts
     departure-mono
@@ -65,6 +56,8 @@
     fira-code-symbols
     nerd-fonts.fira-code
   ];
+
+  # services.snapd.enable = false;
 
   programs.git = {
     enable = true;
@@ -75,8 +68,6 @@
 
   programs = {
     zsh = import ./modules/zsh.nix { inherit config pkgs; };
-    # helix = import ./modules/helix.nix { inherit config pkgs; };
-    # tmux = import ./modules/tmux.nix { inherit config pkgs; };
   };
 
   programs.home-manager.enable = true;

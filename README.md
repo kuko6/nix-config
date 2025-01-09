@@ -19,6 +19,8 @@ nix-channel --update &&
 nix-shell '<home-manager>' -A install
 ```
 
+On NixOS move `/etc/nixos/hardware-configuration.nix` into `nixos/`.
+
 To apply NixOS config:
 ```sh
 sudo nixos-rebuild switch --flake .#<config>
@@ -32,6 +34,11 @@ nix flake update
 New packages should be declared in `~/nix/home-manager/`, to apply changes run:
 ```sh
 home-manager switch --flake .#<config>
+```
+
+To list NixOS generations:
+```sh
+nixos-rebuild list-generations
 ```
 
 Clearing garbage collector:
