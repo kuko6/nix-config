@@ -43,35 +43,56 @@
   };
 
   # For X11 (bspwm)
-  services = {
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "catppuccin-mocha";
-        package = pkgs.kdePackages.sddm;
+  # services = {
+  #   displayManager = {
+  #     sddm = {
+  #       enable = true;
+  #       theme = "catppuccin-mocha";
+  #       package = pkgs.kdePackages.sddm;
+  #     };
+  #       # wayland.enable = true;
+  #   };
+  #   # Enable the X11 windowing system.
+  #   xserver = {
+  #     enable = true;
+  #     windowManager.bspwm.enable = true;
+  #   };
+  # };
+
+  # For Wayland (River)
+  # security.rtkit.enable = true;
+  services.dbus.enable = true;
+  hardware.graphics.enable = true;
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    enable = true;
+    # wlr.enable = true;
+    # lxqt.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
+    config = {
+      common = {
+        default = [ "gtk" ];
       };
-        # wayland.enable = true;
-    };
-    # Enable the X11 windowing system.
-    xserver = {
-      enable = true;
-      windowManager.bspwm.enable = true;
+      river = {
+        default = [
+          "wlr"
+          "gtk"
+        ];
+      };
     };
   };
 
-  # For Wayland (River)
-  # hardware.opengl.enable = true;
-  ## security.rtkit.enable = true;
-  # services.dbus.enable = true;
-  # xdg.portal.wlr.enable = true;
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd river";
-  #     };
-  #   };
-  # };
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd river";
+      };
+    };
+  };
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
