@@ -34,13 +34,18 @@
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
+    cursorTheme = {
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
+      size = 16;
+    };
   };
 
   # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
-    neofetch
     starship
+    fastfetch
     yazi
     tmux
     helix

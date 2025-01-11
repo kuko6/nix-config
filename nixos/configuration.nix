@@ -85,14 +85,28 @@
     };
   };
 
-  services.greetd = {
+  # Display Manager
+  services.displayManager = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd river";
-      };
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "catppuccin-mocha";
+      package = pkgs.kdePackages.sddm;
     };
+    defaultSession = "river";
   };
+
+  programs.river.enable = true;
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd river";
+  #     };
+  #   };
+  # };
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
@@ -173,6 +187,9 @@
   #   enableSSHSupport = true;
   # };
 
+  # Enable trash can
+  services.gvfs.enable = true;
+  
   # List services that you want to enable:
   services.flatpak.enable = true;
 
