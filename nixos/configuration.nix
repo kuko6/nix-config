@@ -84,7 +84,7 @@
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 22 ];
   };
-  service.openssh.enable = true;
+  services.openssh.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -125,7 +125,7 @@
     };
     pulse.enable = true;
   };
-  services.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
 
   # User Configuration
   users = {
