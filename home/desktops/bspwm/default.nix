@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../default.nix
+  ];
+
   xsession.windowManager.bspwm = {
     enable = true;
   };

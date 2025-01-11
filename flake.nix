@@ -38,13 +38,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.kuko = { pkgs, ... }: {
-                imports = [
-                  ./home/default.nix
-                  # Choose which WM you want to use:
-                  ./home/modules/river  # or bspwm or gnome
-                ];
-              };
+              home-manager.users.kuko = import ./home/desktops/river;  # or bspwm or gnome
             }
           ];
         };
@@ -55,16 +49,14 @@
         arm = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./home
-            ./home/modules/river
+            ./home/desktops/river
           ];
         };
 
         x86 = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./home
-            ./home/modules/river
+            ./home/desktops/river
           ];
         };
       };

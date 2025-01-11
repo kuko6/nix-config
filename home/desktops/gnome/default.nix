@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../default.nix
+  ];
+
   # Gnome extensions
   home.packages = with pkgs; [
     gnomeExtensions.blur-my-shell

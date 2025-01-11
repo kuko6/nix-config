@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../default.nix
+  ];
+
   xdg = {
     enable = true;
     # will be in ~/.config/xdg-desktop-portals/
