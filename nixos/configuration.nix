@@ -5,87 +5,26 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Bratislava";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  # System Configuration
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
   };
+  nixpkgs.config.allowUnfree = true;
 
-  # For X11 (bspwm)
-  # services = {
-  #   displayManager = {
-  #     sddm = {
-  #       enable = true;
-  #       theme = "catppuccin-mocha";
-  #       package = pkgs.kdePackages.sddm;
-  #     };
-  #       # wayland.enable = true;
-  #   };
-  #   # Enable the X11 windowing system.
-  #   xserver = {
-  #     enable = true;
-  #     windowManager.bspwm.enable = true;
-  #   };
-  # };
-
-  # For Wayland (River)
-  # security.rtkit.enable = true;
-  services.dbus.enable = true;
-  hardware.graphics.enable = true;
-  xdg.portal = {
-    xdgOpenUsePortal = true;
-    enable = true;
-    # wlr.enable = true;
-    # lxqt.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-wlr
-    ];
-    config = {
-      common = {
-        default = [ "gtk" ];
-      };
-      river = {
-        default = [
-          "wlr"
-          "gtk"
-        ];
-      };
+  # Boot Configuration
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 5;
     };
+    efi.canTouchEfiVariables = true;
   };
+  # boot.loader.grub.configurationLimit = 10;
 
-  # Display Manager
+  # Display and Window Management
   services.displayManager = {
     enable = true;
     sddm = {
@@ -96,7 +35,7 @@
     };
     defaultSession = "river";
   };
-
+  # Automatically adds `river.desktop` to `/usr/share/wayland-sessions/`
   programs.river.enable = true;
 
   # services.greetd = {
@@ -108,117 +47,129 @@
   #   };
   # };
 
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  # XDG Portal Configuration
+  services.dbus.enable = true;
+  hardware.graphics.enable = true;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    # wlr.enable = true;
+    # lxqt.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
+    config = {
+      common.default = [ "gtk" ];
+      river.default = [ "wlr" "gtk" ];
+    };
+  };
 
-  # Configure keymap in X11
+  # For X11 (bspwm)
+  # services.displayManager = {
+  #   sddm = {
+  #     enable = true;
+  #     theme = "catppuccin-mocha";
+  #     package = pkgs.kdePackages.sddm;
+  #   };
+  # };
+  # services.xserver = {
+  #   enable = true;
+  #   windowManager.bspwm.enable = true;
+  # };
+
+  # Networking
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 22 ];
+  };
+  service.openssh.enable = true;
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Localization
+  time.timeZone = "Europe/Bratislava";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+  };
+
+  # Input Configuration
   services.xserver.xkb = {
     layout = "gb";
     variant = "mac";
   };
-
-  # Configure console keymap
   console.keyMap = "uk";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  # Audio Configuration
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  };
+  services.pulseaudio.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+  # User Configuration
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.kuko = {
+      isNormalUser = true;
+      description = "kuko";
+      extraGroups = [ "networkmanager" "wheel" ];
+      # packages = with pkgs; [];
+    };
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kuko = {
-    isNormalUser = true;
-    description = "kuko";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile.
+  # System Packages
   environment.systemPackages = with pkgs; [
     vim
     git
     zsh
     curl
-    bash
     (catppuccin-sddm.override {
       flavor = "mocha";
-      font  = "Noto Sans";
+      font = "Noto Sans";
       fontSize = "9";
-      # background = "${./wallpaper.png}";
-      # loginBackground = true;
     })
   ];
 
-  programs.dconf.enable = true;
+  # Other System Services
+  services = {
+    printing.enable = true;
+    flatpak.enable = true;
+    gvfs.enable = true;     # enables trash...
+  };
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  # Programs
+  programs = {
+    dconf.enable = true;
+    zsh.enable = true;
+  };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # Enable trash can
-  services.gvfs.enable = true;
-  
-  # List services that you want to enable:
-  services.flatpak.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Limit the number of generations to keep
-  boot.loader.systemd-boot.configurationLimit = 5;
-  # boot.loader.grub.configurationLimit = 10;
-
-  # Perform garbage collection weekly to maintain low disk usage
+  # System Maintenance
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 1w";
   };
-
-  # Optimize storage
-  # You can also manually optimize the store via:
-  #    nix-store --optimise
-  # Refer to the following link for more details:
-  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  nix.settings.auto-optimise-store = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -226,5 +177,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }
