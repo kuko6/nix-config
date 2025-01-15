@@ -47,6 +47,9 @@
     createDirectories = true;
     templates = null;
     publicShare = null;
+    extraConfig = {
+      XDG_DEVELOPER_DIR = "${config.home.homeDirectory}/Developer";
+    };
   };
 
   # Packages installed to the user profile
