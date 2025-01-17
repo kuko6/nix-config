@@ -19,27 +19,30 @@
 
   fonts.fontconfig.enable = true;
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Latte-Compact-Pink-Light";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "normal" ];
-        variant = "latte";
-      };
-    };
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "Vanilla-DMZ";
-      package = pkgs.vanilla-dmz;
-      size = 16;
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Catppuccin-Latte-Compact-Pink-Light";
+  #     package = pkgs.catppuccin-gtk.override {
+  #       accents = [ "pink" ];
+  #       size = "compact";
+  #       tweaks = [ "normal" ];
+  #       variant = "latte";
+  #     };
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   cursorTheme = {
+  #     name = "Vanilla-DMZ";
+  #     package = pkgs.vanilla-dmz;
+  #     size = 16;
+  #   };
+  # };
+
+  stylix.enable = true;
+  stylix.image = "~/Pictures/Wallpapers/Irl/Mitski/001.jpg"
 
   # Creates common user directories
   xdg.userDirs = {
