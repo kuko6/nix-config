@@ -41,9 +41,6 @@
   #   };
   # };
 
-  stylix.enable = true;
-  stylix.image = "~/Pictures/Wallpapers/Irl/Mitski/001.jpg"
-
   # Creates common user directories
   xdg.userDirs = {
     enable = true;
