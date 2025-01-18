@@ -15,6 +15,10 @@
       source = ../dotfiles;
       recursive = true;
     };
+    ".local/bin" = {
+      source = ../bin;
+      recursive = true;
+    };
   };
 
   fonts.fontconfig.enable = true;

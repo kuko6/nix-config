@@ -17,7 +17,7 @@ riverctl spawn "dbus-update-activation-environment SEATD_SOCK DISPLAY WAYLAND_DI
 # Waybar and Wallpaper
 exec waybar &
 # exec swaybg -i ~/Pictures/Wallpapers/Mitski/mitski.jpg -m fill &
-# ~/.config/scripts/randwall.sh &
+# randwall.sh &
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot
@@ -30,7 +30,7 @@ riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
 # riverctl map normal Super+Shift E exit
-riverctl map normal Super+Shift E spawn "~/.config/scripts/powermenu.sh &"
+riverctl map normal Super+Shift E spawn "powermenu.sh &"
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
