@@ -17,8 +17,8 @@
     "format": "{icon}",
     "format-icons": ["⏻"],
     // "tooltip": "Power Menu",
-    // "exec": "powermenu.sh",
-    "on-click": "powermenu.sh",
+    // "exec": "~/.local/bin/powermenu.sh",
+    "on-click": "~/.local/bin/powermenu.sh",
     "interval": 0,
   },
   // "pulseaudio": {
