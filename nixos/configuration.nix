@@ -25,7 +25,7 @@
   # boot.loader.grub.configurationLimit = 10;
 
   stylix.enable = true;
-  stylix.image = "~/Pictures/Wallpapers/Irl/Mitski/001.jpg";
+  stylix.image = ./001.jpg;
 
   # Display and Window Management
   services.displayManager = {
