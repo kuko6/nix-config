@@ -17,5 +17,5 @@ bspc config gapless_monocle      true
 # bspc rule -a Kupfer.py focus=on
 # bspc rule -a Screenkey manage=off
 
-polybar &
+# polybar &
 # set bg with feh...
