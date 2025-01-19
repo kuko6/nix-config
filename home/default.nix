@@ -26,12 +26,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Latte-Compact-Pink-Light";
+      name = "catppuccin-mocha-lavender-compact+normal";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
+        accents = [ "lavender" ];
         size = "compact";
         tweaks = [ "normal" ];
-        variant = "latte";
+        variant = "mocha";
       };
     };
     iconTheme = {
@@ -41,7 +41,7 @@
     cursorTheme = {
       name = "Vanilla-DMZ";
       package = pkgs.vanilla-dmz;
-      size = 16;
+      size = 24;
     };
   };
 
