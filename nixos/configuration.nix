@@ -135,6 +135,9 @@
       font = "Noto Sans";
       fontSize = "9";
     })
+    pavucontrol # GUI volume control
+    pulseaudio  # For pactl utility
+    pamixer     # CLI volume control
   ];
 
   # Other System Services
