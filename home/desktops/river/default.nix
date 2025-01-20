@@ -29,10 +29,11 @@
     swaybg
   ];
 
-  # home.sessionVariables = {
-  #   XDG_CURRENT_DESKTOP = "river";
-  #   XDG_SESSION_TYPE = "wayland";
-  #   GTK_USE_PORTAL = 1;
-  #   GDK_BACKEND = "wayland";
-  # };
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "river";
+    XDG_SESSION_TYPE = "wayland";
+    GTK_USE_PORTAL = 1;
+    GDK_BACKEND = "wayland";
+    MOZ_ENABLE_WAYLAND = 1;
+  };
 }
