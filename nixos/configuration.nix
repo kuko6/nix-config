@@ -7,6 +7,15 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  system.activationScripts.preActivation = ''
+    if [[ -e /run/current-system ]]; then
+      echo "--- diff to current-system"
+      # ${pkgs.nix}/bin/nix store diff-closures --verbose /run/current-system "$systemConfig"
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${config.nix.package}/bin diff /run/current-system "$systemConfig"
+      echo "---"
+    fi
+  '';
+  
   # System Configuration
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
@@ -130,6 +139,7 @@
     git
     zsh
     curl
+    nvd
     (catppuccin-sddm.override {
       flavor = "mocha";
       font = "Noto Sans";

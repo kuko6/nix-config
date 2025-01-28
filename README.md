@@ -31,6 +31,11 @@ To update packages:
 nix flake update
 ```
 
+View changes:
+```sh
+./bin/nix-diff.sh
+```
+
 New packages should be declared in `~/nix/home-manager/`, to apply changes run:
 ```sh
 home-manager switch --flake .#<config>
