@@ -44,6 +44,10 @@
     };
     defaultSession = "river";
   };
+
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.wayland = true;
+
   # Automatically adds `river.desktop` to `/usr/share/wayland-sessions/`
   programs.river.enable = true;
 
@@ -156,7 +160,8 @@
     flatpak.enable = true;
     gvfs.enable = true;     # enables trash...
   };
-
+  services.gnome.gnome-keyring.enable = true;
+  
   # Programs
   programs = {
     dconf.enable = true;
