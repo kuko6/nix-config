@@ -65,7 +65,7 @@
     tmux
     helix
     btop
-    firefox
+    librewolf
     nautilus
     qimgv
     # ghostty
