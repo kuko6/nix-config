@@ -39,8 +39,8 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Vanilla-DMZ";
-      package = pkgs.vanilla-dmz;
+      name = "macOS";
+      package = pkgs.apple-cursor;
       size = 24;
     };
   };
@@ -62,6 +62,7 @@
     starship
     fastfetch
     yazi
+    tree
     tmux
     helix
     btop
