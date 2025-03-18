@@ -65,7 +65,7 @@
     tmux
     helix
     btop
-    librewolf
+    firefox
     nautilus
     qimgv
     vscode
