@@ -45,8 +45,31 @@
     defaultSession = "river";
   };
 
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.gdm.wayland = true;
+  # For Gnome
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager.gdm.enable = true;
+  #   displayManager.gdm.wayland = true;
+  #   desktopManager.gnome.enable = true;
+  # };
+
+  # environment.gnome.excludePackages = (with pkgs; [
+  #   atomix # puzzle game
+  #   cheese # webcam tool
+  #   epiphany # web browser
+  #   evince # document viewer
+  #   geary # email reader
+  #   gedit # text editor
+  #   gnome-characters
+  #   gnome-music
+  #   gnome-photos
+  #   gnome-terminal
+  #   gnome-tour
+  #   hitori # sudoku game
+  #   iagno # go game
+  #   tali # poker game
+  #   totem # video player
+  # ]);
 
   # Automatically adds `river.desktop` to `/usr/share/wayland-sessions/`
   programs.river.enable = true;

@@ -5,7 +5,7 @@ theme = "catppuccin_mocha"
 bufferline = "multiple"
 color-modes = true
 
-[editor.lsp]
+# [editor.lsp]
 # display-inlay-hints = true
 
 [editor.soft-wrap]
@@ -28,9 +28,6 @@ select = "underline"
 [editor.indent-guides]
 render = true
 # character = "|"
-
-# [keys.normal]
-# C-f = [":new", ":insert-output lf -print-selection", "split_selection_on_newline", "goto_file", "goto_last_modification", "goto_last_modified_file", ":buffer-close!", ":redraw"]
 
 [keys.normal.space]
 i = ":toggle lsp.display-inlay-hints"
