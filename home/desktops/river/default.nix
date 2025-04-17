@@ -27,9 +27,12 @@
     foot
     fuzzel
     swaybg
+
+    nautilus
+    qimgv
   ];
 
-  home.sessionVariables = {
+   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "river";
     XDG_SESSION_TYPE = "wayland";
     GTK_USE_PORTAL = 1;

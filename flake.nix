@@ -49,14 +49,14 @@
         arm = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./home/desktops/river
+            ./home/desktops/gnome
           ];
         };
 
         x86 = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./home/desktops/river
+            ./home/desktops/gnome
           ];
         };
       };

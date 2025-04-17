@@ -65,11 +65,10 @@
     tmux
     helix
     btop
-    firefox
-    nautilus
-    qimgv
-    vscode
     tree
+
+    # firefox
+    # vscode
     # ghostty
 
     # Fonts

@@ -7,6 +7,7 @@
 
   # Gnome extensions
   home.packages = with pkgs; [
+    gnome-extension-manager
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.places-status-indicator
