@@ -10,6 +10,28 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
 
+  home.activation = {
+    showLatestDiff = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      nix profile diff-closures --verbose --profile ~/.local/state/nix/profiles/home-manager
+    '';
+  };
+
+  # home.activation = {
+  #   showLatestDiff = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #     home-manager generations \
+  #       | head -n2 \
+  #       | awk '
+  #           NR==1 { new=$7 }
+  #           NR==2 { old=$7 }
+  #           END {
+  #             printf("Changes from %s → %s\n", old, new)
+  #             system("nvd diff " old " " new)
+  #           }
+  #         '
+  #   '';
+  # };
+
+
   home.file = {
     "${config.xdg.configHome}" = {
       source = ../dotfiles;
@@ -25,24 +47,24 @@
 
   gtk = {
     enable = true;
-    theme = {
-      name = "catppuccin-mocha-lavender-compact+normal";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        tweaks = [ "normal" ];
-        variant = "mocha";
-      };
-    };
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "macOS";
-      package = pkgs.apple-cursor;
-      size = 24;
-    };
+    # theme = {
+    #   name = "catppuccin-mocha-lavender-compact+normal";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = [ "lavender" ];
+    #     size = "compact";
+    #     tweaks = [ "normal" ];
+    #     variant = "mocha";
+    #   };
+    # };
+    # iconTheme = {
+    #   name = "Papirus";
+    #   package = pkgs.papirus-icon-theme;
+    # };
+    # cursorTheme = {
+    #   name = "macOS";
+    #   package = pkgs.apple-cursor;
+    #   size = 24;
+    # };
   };
 
   # Creates common user directories
@@ -66,6 +88,8 @@
     helix
     btop
     tree
+    nvd
+    vim
 
     # firefox
     # vscode

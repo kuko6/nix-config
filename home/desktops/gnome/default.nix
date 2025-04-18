@@ -5,9 +5,14 @@
     ../../default.nix
   ];
 
-  # Gnome extensions
+  targets.genericLinux.enable = true;
+
+  # Gnome apps and extensions
   home.packages = with pkgs; [
     gnome-extension-manager
+    gnome-tweaks
+    gnome-weather
+    
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.places-status-indicator
