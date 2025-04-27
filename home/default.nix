@@ -67,15 +67,15 @@
   };
 
   # Creates common user directories
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-    templates = null;
-    publicShare = null;
-    extraConfig = {
-      XDG_DEVELOPER_DIR = "${config.home.homeDirectory}/Developer";
-    };
-  };
+  # xdg.userDirs = {
+  #   enable = true;
+  #   createDirectories = true;
+  #   templates = null;
+  #   publicShare = null;
+  #   extraConfig = {
+  #     XDG_DEVELOPER_DIR = "${config.home.homeDirectory}/Developer";
+  #   };
+  # };
 
   # Packages installed to the user profile
   # packages doesnt need to be here if they are included in programs
