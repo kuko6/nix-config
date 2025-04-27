@@ -91,10 +91,6 @@
     vim
     cbonsai
 
-    # firefox
-    # vscode
-    # ghostty
-
     # Fonts
     departure-mono
     fira-code

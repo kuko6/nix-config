@@ -7,17 +7,11 @@
 
   targets.genericLinux.enable = true;
 
-  # Gnome extensions
   home.packages = with pkgs; [
     sxhkd
     polybar
     rofi
     feh
-
-    # waybar
-    # foot
-    # fuzzel
-    # swaybg
 
     gnome-extension-manager
     gnome-weather
@@ -30,15 +24,11 @@
     gnomeExtensions.space-bar
     gnomeExtensions.runcat
   ];
-  
+
   xsession.windowManager.bspwm = {
     enable = true;
   };
 
-  # wayland.windowManager.river = {
-  #   enable=true;
-  # };
-  
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
       # search = [ "<Super>S" ];
