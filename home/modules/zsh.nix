@@ -18,7 +18,7 @@
     path = "${config.xdg.dataHome}/zsh/history";
   };
 
-  initExtra = ''
+  initContent = ''
     # Terminal theme #
     export CLICOLOR=1
     export LSCOLORS=ExFxBxDxCxegedabagacad

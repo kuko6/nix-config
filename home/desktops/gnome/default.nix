@@ -7,12 +7,21 @@
 
   targets.genericLinux.enable = true;
 
-  # Gnome apps and extensions
+  # Gnome extensions
   home.packages = with pkgs; [
+    sxhkd
+    polybar
+    rofi
+    feh
+
+    # waybar
+    # foot
+    # fuzzel
+    # swaybg
+
     gnome-extension-manager
-    gnome-tweaks
     gnome-weather
-    
+    gnome-tweaks
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.places-status-indicator
@@ -21,7 +30,15 @@
     gnomeExtensions.space-bar
     gnomeExtensions.runcat
   ];
+  
+  xsession.windowManager.bspwm = {
+    enable = true;
+  };
 
+  # wayland.windowManager.river = {
+  #   enable=true;
+  # };
+  
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
       # search = [ "<Super>S" ];

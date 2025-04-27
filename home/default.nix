@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home.username = "kuko";
@@ -11,7 +11,7 @@
   home.stateVersion = "23.05";
 
   home.activation = {
-    showLatestDiff = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    test = lib.hm.dag.entryAfter ["writeBoundary"] ''
       nix profile diff-closures --verbose --profile ~/.local/state/nix/profiles/home-manager
     '';
   };
@@ -31,7 +31,6 @@
   #   '';
   # };
 
-
   home.file = {
     "${config.xdg.configHome}" = {
       source = ../dotfiles;
@@ -46,25 +45,25 @@
   fonts.fontconfig.enable = true;
 
   gtk = {
-    enable = true;
-    # theme = {
-    #   name = "catppuccin-mocha-lavender-compact+normal";
-    #   package = pkgs.catppuccin-gtk.override {
-    #     accents = [ "lavender" ];
-    #     size = "compact";
-    #     tweaks = [ "normal" ];
-    #     variant = "mocha";
-    #   };
-    # };
-    # iconTheme = {
-    #   name = "Papirus";
-    #   package = pkgs.papirus-icon-theme;
-    # };
-    # cursorTheme = {
-    #   name = "macOS";
-    #   package = pkgs.apple-cursor;
-    #   size = 24;
-    # };
+   enable = true;
+   #  theme = {
+   #    name = "catppuccin-mocha-lavender-compact+normal";
+   #     package = pkgs.catppuccin-gtk.override {
+   #     accents = [ "lavender" ];
+   #     size = "compact";
+   #     tweaks = [ "normal" ];
+   #     variant = "mocha";
+   #   };
+   # };
+   # iconTheme = {
+   #   name = "Papirus";
+   #   package = pkgs.papirus-icon-theme;
+   # };
+   # cursorTheme = {
+   #   name = "macOS";
+   #   package = pkgs.apple-cursor;
+   #   size = 24;
+   # };
   };
 
   # Creates common user directories
@@ -90,6 +89,7 @@
     tree
     nvd
     vim
+    cbonsai
 
     # firefox
     # vscode
@@ -100,6 +100,9 @@
     fira-code
     fira-code-symbols
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    material-icons
+    material-symbols
   ];
 
   # services.snapd.enable = false;
