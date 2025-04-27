@@ -14,9 +14,9 @@ super + p
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# open powermenu
 super + shift + e
 	~/.local/bin/rofi-powermenu.sh
-
 #
 # bspwm hotkeys
 #
@@ -38,7 +38,7 @@ super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
-super + g
+super + Return
 	bspc node -s biggest.window
 
 #
@@ -46,7 +46,7 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,space,f}
+super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
