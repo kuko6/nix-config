@@ -1,7 +1,8 @@
 { pkgs, config, ... }: {
   enable = true;
   settings = {
-    theme = "catppuccin_mocha";
+    # theme = "catppuccin_mocha";
+    theme = "rose_pine_moon";
     editor = {
       bufferline = "multiple";
       color-modes = true;
