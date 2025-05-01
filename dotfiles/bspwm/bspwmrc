@@ -31,3 +31,4 @@ $HOME/.config/polybar/launch.sh &
 # feh --bg-fill /home/kuko/Pictures/Wallpapers/Irl/Mitski/001.jpg &
 xsetroot -solid "#2b2e3b" &
 xsetroot -cursor_name left_ptr &
+betterlockscreen -u ~/Pictures/Wallpapers/Irl/Mitski &

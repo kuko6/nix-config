@@ -3,16 +3,12 @@
 {
   imports = [
     ../../default.nix
+    ../bspwm/default.nix
   ];
 
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
-    sxhkd
-    polybar
-    rofi
-    feh
-
     gnome-extension-manager
     gnome-weather
     gnome-tweaks
@@ -24,10 +20,6 @@
     gnomeExtensions.space-bar
     gnomeExtensions.runcat
   ];
-
-  xsession.windowManager.bspwm = {
-    enable = true;
-  };
 
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {

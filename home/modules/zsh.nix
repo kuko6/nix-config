@@ -19,6 +19,8 @@
   };
 
   initContent = ''
+    alias logout="sudo systemctl restart gdm"
+
     # Terminal theme #
     export CLICOLOR=1
     export LSCOLORS=ExFxBxDxCxegedabagacad

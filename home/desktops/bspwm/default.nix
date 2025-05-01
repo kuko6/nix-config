@@ -10,10 +10,10 @@
   };
 
   home.packages = with pkgs; [
-    kitty
     sxhkd
     polybar
     rofi
     feh
+    betterlockscreen
   ];
 }

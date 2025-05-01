@@ -10,7 +10,8 @@ case $selected in
     "Logout")
         bspc quit;;
     "Sleep")
-        systemctl suspend;;
+        # systemctl suspend;;
+        betterlockscreen -l;;
     "Reboot")
         systemctl reboot;;
     "Shutdown")
