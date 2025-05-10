@@ -90,6 +90,7 @@
     nvd
     vim
     cbonsai
+    playerctl
 
     # Fonts
     departure-mono
@@ -112,6 +113,10 @@
 
   programs = {
     zsh = import ./modules/zsh.nix { inherit config pkgs; };
+  };
+
+  services = {
+    dunst = import ./modules/dunst.nix { inherit config; };
   };
 
   programs.home-manager.enable = true;

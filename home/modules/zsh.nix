@@ -19,7 +19,7 @@
   };
 
   initContent = ''
-    alias logout="sudo systemctl restart gdm"
+    alias rgdm="sudo systemctl restart gdm"
 
     # Terminal theme #
     export CLICOLOR=1
