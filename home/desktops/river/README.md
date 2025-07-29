@@ -1,7 +1,8 @@
 # River Setup
+<!--
 - [Tumbleweed - no DE](#tumbleweed---no-de)
 - [Starting from Desktop Environment](#starting-from-desktop-environment)
-- [Resources](#resources)
+-->
 
 ## Tumbleweed - no DE
 - can’t get this one to work with river installed with nix (it has to be with zypper)
@@ -80,6 +81,7 @@ gtk-decoration-layout=:
 
 to `~/.config/gtk-4.0/settings.ini` and (or) `~/.config/gtk-3.0/settings.ini`
 -->
+<!--
 ## Ref
 
 - [https://codeberg.org/river/river](https://codeberg.org/river/river)
@@ -92,3 +94,4 @@ to `~/.config/gtk-4.0/settings.ini` and (or) `~/.config/gtk-3.0/settings.ini`
 - [https://github.com/uncomfyhalomacro/river-paper-theme](https://github.com/uncomfyhalomacro/river-paper-theme)
 - [https://git.sr.ht/~lown/dotfiles-nixos-river](https://git.sr.ht/~lown/dotfiles-nixos-river)
 - [https://www.reddit.com/r/unixporn/comments/1dq3lv3/hyprland_surprisingly_easy_to_install_on_debian/](https://www.reddit.com/r/unixporn/comments/1dq3lv3/hyprland_surprisingly_easy_to_install_on_debian/)
+-->
